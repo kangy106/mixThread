@@ -1,7 +1,6 @@
 import auto
 import display
 
-
 auto = auto.Auto()
 thread = auto.scraping()
 display = display.Display()
