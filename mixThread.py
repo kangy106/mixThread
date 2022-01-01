@@ -1,13 +1,16 @@
-class mixThread:
-    auto = Auto()
-    thread = Thread(auto.scraping())
-    display = Display()
-    display.execution(thread)
+import auto
+import display
+
+
+auto = auto.Auto()
+thread = auto.scraping()
+display = display.Display()
+display.execution(thread)
 
     
 
 
-# import 
+# import requests
 # import time
 # from bs4 import BeautifulSoup
 # import re
