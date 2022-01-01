@@ -8,8 +8,7 @@ class Auto:
         thread = []
         for i in range(len(data[0])):
             scr = scraping.Scraping()
-            thread += scr.getThread(data[0][i],data[1][i],data[2][i])
+            thread += scr.getThread(data[0][i],data[1][i])
         thread.sort()
-        print(thread)
 
         return thread

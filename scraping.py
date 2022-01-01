@@ -5,14 +5,13 @@ import re
 import datetime
 
 class Scraping:
-    def getThread(self,pattern,url,start):
+    def getThread(self,url,start):
         res=requests.get(url)
         thread = []
-        if pattern == 0:
-            res.encoding = res.apparent_encoding
-            soup = BeautifulSoup(res.text, 'lxml')
-
-            threadRes=soup.find_all('dd')
+        res.encoding = res.apparent_encoding
+        soup = BeautifulSoup(res.text, 'lxml')
+        threadRes=soup.find_all('dd')
+        if threadRes != []:
             threadTime=soup.find_all('dt')
 
             for i in range(len(threadTime)):
@@ -32,8 +31,7 @@ class Scraping:
 
                 tuple = (time_-s,re.sub('<[^<>]*>|\n|&gt;&gt;[0-9]+',"",str(threadRes[i])))
                 thread.append(tuple)
-        elif int(pattern) == 1:
-            res.encoding = res.apparent_encoding
+        else:
             soup = BeautifulSoup(res.text, 'html.parser')
             threadRes = soup.select('span.escaped')
             threadTime = soup.select('span.date')
